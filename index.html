@@ -40,15 +40,15 @@
       width: 60px;
       position: absolute;
       top: -30px;
-      animation: swing 3s ease-in-out infinite;
+      animation: swing 4s ease-in-out infinite;
     }
 
     .minion.left { left: -10px; }
-    .minion.right { right: -10px; animation-delay: 1s; }
+    .minion.right { right: -10px; animation-delay: 1.5s; }
 
     @keyframes swing {
-      0%,100% { transform: rotate(-10deg); }
-      50% { transform: rotate(10deg); }
+      0%,100% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
     }
 
     h2 { color: #fbc02d; margin-top: 30px; }
@@ -57,7 +57,7 @@
 
     .message-box {
       margin-top: 20px;
-      padding: 15px;
+      padding: 18px;
       border-radius: 15px;
       background: #fff9c4;
       font-size: 14px;
@@ -81,7 +81,7 @@
     .photo-grid img {
       width: 100%;
       border-radius: 12px;
-      animation: zoom 4s infinite alternate;
+      animation: zoom 6s infinite alternate;
     }
 
     @keyframes zoom {
@@ -89,18 +89,18 @@
       to { transform: scale(1.05); }
     }
 
-    /* Floating hearts */
+    /* Slower floating hearts */
     .heart {
       position: fixed;
       bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 6s linear infinite;
+      font-size: 22px;
+      animation: floatUp 10s linear infinite;
       opacity: 0.7;
     }
 
     @keyframes floatUp {
       0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-100vh); opacity: 0; }
+      100% { transform: translateY(-120vh); opacity: 0; }
     }
   </style>
 </head>
@@ -115,14 +115,27 @@
     <img src="https://i.imgur.com/7bK3s7S.png" class="minion right" />
 
     <h2>💛 Scan Your Surprise 💛</h2>
+
     <div id="reader"></div>
 
     <div id="result" class="message-box">
       <p><b>To my boyfriend!! &lt;3</b></p>
-      <p>Please know I'll always love you. I'll never give up on you. I'll be here until the very end. You're my only love. You deserve the world.</p>
-      <p>You make me feel like I belong, loved, appreciated, and accepted. You make me feel less weird and more me.</p>
-      <p>I fell for you so quickly, and I’d do it all again. You mean everything to me.</p>
-      <p>Happy 2 years, my love 💛</p>
+      <p>
+        Please know I'll always love you. I'll never give up on you. I'll be here until the very end.
+        You're my only love. You deserve the world.
+      </p>
+      <p>
+        I'm sorry if I hurt you sometimes — I never mean it. You make me feel safe, loved, and accepted.
+        You make me feel like I belong.
+      </p>
+      <p>
+        Falling in love with you was the best thing that ever happened to me.
+        I’d choose you in every lifetime.
+      </p>
+      <p>
+        I love you more than words can explain.
+      </p>
+      <p><b>Happy 2 Years, my love 💛</b></p>
 
       <div class="photo-grid">
         <img src="photo1.jpeg">
@@ -134,9 +147,20 @@
 
   <script>
     function onScanSuccess(decodedText) {
+      // Hide camera
+      document.getElementById("reader").style.display = "none";
+
+      // Show message
       document.getElementById("result").style.display = "block";
+
+      // Play music
       document.getElementById("bgMusic").play();
+
+      // Floating hearts
       createHearts();
+
+      // Stop scanner
+      html5QrCode.stop();
     }
 
     function createHearts() {
@@ -145,22 +169,22 @@
         heart.className = "heart";
         heart.innerHTML = "💛";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        heart.style.animationDuration = (8 + Math.random() * 6) + "s";
         document.body.appendChild(heart);
 
-        setTimeout(() => heart.remove(), 6000);
-      }, 300);
+        setTimeout(() => heart.remove(), 12000);
+      }, 800);
     }
 
     const html5QrCode = new Html5Qrcode("reader");
+
     document.body.addEventListener("click", () => {
-  html5QrCode.start(
-    { facingMode: "environment" },
-    { fps: 10, qrbox: 200 },
-    onScanSuccess
-  );
-}, { once: true });
-  
+      html5QrCode.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 200 },
+        onScanSuccess
+      );
+    }, { once: true });
   </script>
 
 </body>
