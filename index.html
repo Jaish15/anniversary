@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💛 Our 2 Year Anniversary 💛</title>
 
-  <script src="https://unpkg.com/html5-qrcode"></script>
-
   <style>
     body {
       margin: 0;
@@ -36,24 +34,28 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    .minion {
-      width: 60px;
-      position: absolute;
-      top: -30px;
-      animation: swing 4s ease-in-out infinite;
+    h2 {
+      color: #fbc02d;
+      margin-top: 10px;
     }
 
-    .minion.left { left: -10px; }
-    .minion.right { right: -10px; animation-delay: 1.5s; }
-
-    @keyframes swing {
-      0%,100% { transform: rotate(-8deg); }
-      50% { transform: rotate(8deg); }
+    .tap-area {
+      margin: 20px 0;
+      cursor: pointer;
+      animation: pulse 2s infinite;
     }
 
-    h2 { color: #fbc02d; margin-top: 30px; }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
 
-    #reader { margin-top: 15px; }
+    .tap-area img {
+      width: 220px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
 
     .message-box {
       margin-top: 20px;
@@ -89,7 +91,6 @@
       to { transform: scale(1.05); }
     }
 
-    /* Slower floating hearts */
     .heart {
       position: fixed;
       bottom: -20px;
@@ -111,96 +112,38 @@
   </audio>
 
   <div class="card">
-    <img src="https://i.imgur.com/7bK3s7S.png" class="minion left" />
-    <img src="https://i.imgur.com/7bK3s7S.png" class="minion right" />
+    <h2>💛 Tap Your Surprise 💛</h2>
 
-    <h2>💛 Scan Your Surprise 💛</h2>
-
-    <div id="reader"></div>
+    <div class="tap-area" onclick="openSurprise()">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://jaish15.github.io/anniversary/" />
+    </div>
 
     <div id="result" class="message-box">
-  <p><b>To my boyfriend!! &lt;3</b></p>
+      <p><b>To my boyfriend!! &lt;3</b></p>
 
-  <p>
-    Please know I'll always love you. I'll never give up on you. I'll be here until the very end.
-    You're my only love. You deserve the world. I'm so sorry that I can be rude at times — I don't mean it.
-  </p>
+      <p>Please know I'll always love you. I'll never give up on you. I'll be here until the very end. You're my only love. You deserve the world.</p>
 
-  <p>
-    You make me feel like I belong here. You make me feel lovable, appreciated, loved, welcomed, accepted.
-    You make me feel less weird. You're the best boyfriend I could ever ask for, and I never want you to be upset with me.
-  </p>
+      <p>You make me feel like I belong, loved, appreciated, accepted. You make me feel less weird. You're the best boyfriend I could ever ask for.</p>
 
-  <p>
-    I hope we stick together forever. All the things we should do, all the things we should say,
-    all the things we should think — just anything. Everything about you is so perfect there aren't
-    even enough words in the dictionary to explain my love for you.
-  </p>
+      <p>I hope we stick together forever. Everything about you is perfect and words will never be enough.</p>
 
-  <p>
-    I've always felt like an outcast but you make me feel accepted. My pretty boy.
-    I'll try my hardest to never let you down. I mean it when I say I love you with my heart.
-    I trusted you enough to open up to you — it takes so long for me to do that.
-  </p>
+      <p>I trusted you enough to open my heart. Falling in love with you was worth everything. You mean the world to me.</p>
 
-  <p>
-    Falling in love with you so quickly was so worth it. I'm so happy that we talked that night,
-    or else we never would have happened. You make me feel unexplainable emotions.
-    I got so lucky to meet you. I got so lucky that you talked to me.
-  </p>
+      <p>I love you with my whole heart. Happy 2 years, my love 💛</p>
 
-  <p>
-    You're so special to me and I want you to know that.
-    You don't even know what I would do for you.
-    You're the sweetest boy I've ever met.
-    Thank you so much for being here when nobody else was.
-  </p>
-
-  <p>
-    Without you I wouldn't even be here right now. I'd probably be dead.
-    Even once I die, I'll always watch over you.
-    I'll always follow you around.
-    I'll be the biggest pain to get rid of — because we both know I won't let that happen.
-  </p>
-
-  <p>
-    Honestly, you mean as much to me as my family.
-    I never want you to think I don't appreciate you — because I do.
-    You mean the world to me.
-  </p>
-
-  <p>
-    I have no clue what I would do without you, and I don't want to find out.
-    I'll stay with you forever, until you want me gone.
-  </p>
-
-  <p><b>I love you. Happy 2 years, Pragu 💛</b></p>
-
-  <div class="photo-grid">
-    <img src="photo1.jpeg">
-    <img src="photo2.jpeg">
-    <img src="photo3.jpeg">
-  </div>
-</div>
+      <div class="photo-grid">
+        <img src="photo1.jpeg">
+        <img src="photo2.jpeg">
+        <img src="photo3.jpeg">
+      </div>
     </div>
   </div>
 
   <script>
-    function onScanSuccess(decodedText) {
-      // Hide camera
-      document.getElementById("reader").style.display = "none";
-
-      // Show message
+    function openSurprise() {
       document.getElementById("result").style.display = "block";
-
-      // Play music
       document.getElementById("bgMusic").play();
-
-      // Floating hearts
       createHearts();
-
-      // Stop scanner
-      html5QrCode.stop();
     }
 
     function createHearts() {
@@ -215,16 +158,6 @@
         setTimeout(() => heart.remove(), 12000);
       }, 800);
     }
-
-    const html5QrCode = new Html5Qrcode("reader");
-
-    document.body.addEventListener("click", () => {
-      html5QrCode.start(
-        { facingMode: "environment" },
-        { fps: 10, qrbox: 200 },
-        onScanSuccess
-      );
-    }, { once: true });
   </script>
 
 </body>
