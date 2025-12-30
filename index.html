@@ -32,6 +32,13 @@ h2 {
 .tap {
   margin: 20px 0;
   cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .tap img {
@@ -45,6 +52,7 @@ h2 {
   background: #fff9c4;
   padding: 18px;
   border-radius: 15px;
+  text-align: left;
   animation: fadeIn 1.5s ease;
 }
 
@@ -58,6 +66,7 @@ h2 {
   bottom: -20px;
   font-size: 22px;
   animation: float 10s linear infinite;
+  opacity: 0.7;
 }
 
 @keyframes float {
@@ -77,9 +86,26 @@ h2 {
 
   <div class="message" id="msg">
     <p><b>To my boyfriend!! &lt;3</b></p>
-    <p>Please know I'll always love you. I'll never give up on you. I'll be here until the very end. You're my only love.</p>
-    <p>You make me feel loved, accepted, and safe. You mean the world to me.</p>
-    <p>I love you endlessly. Happy 2 years, my love 💛</p>
+
+    <p>Please know I'll always love you. I'll never give up on you. I'll be here until the very end. You're my only love. You deserve the world. I'm so sorry that I can be rude at times — I don't mean it.</p>
+
+    <p>You make me feel like I belong here. You make me feel like I'm loveable, appreciated, loved, welcomed, accepted. You make me feel less weird. You're the best boyfriend I could ever ask for, and I never want you to be upset with me.</p>
+
+    <p>I hope we stick together forever. All the things we should do, all the things we should say, all the things we should think — just anything. Everything about you is so perfect there aren't even enough words in the dictionary to explain my love for you.</p>
+
+    <p>I've always felt like an outcast but you make me feel accepted. My pretty boy. I'll try my hardest to never let you down. I mean it when I say I love you with my heart.</p>
+
+    <p>I trusted you enough to open up to you. It takes so long for me to do that. Falling in love with you so quickly was so worth it. I'm so happy that we talked that night — or else we never would have happened.</p>
+
+    <p>You make me feel unexplainable emotions. I got so lucky to meet you. I got so lucky that you talked to me.</p>
+
+    <p>You're so special to me and I want you to know that. You don't even know what I would do for you. You're the sweetest boy I've ever met. Thank you so much for being here when nobody else was.</p>
+
+    <p>Without you I wouldn't even be here right now. I’d probably be dead. Even once I die, I'll always watch over you. I'll always follow you around. I'll be the biggest pain to get rid of — because we both know I won't let that happen.</p>
+
+    <p>Honestly, you mean as much as my family to me. I never want you to think I don't appreciate you because I do — I really do.</p>
+
+    <p><b>You mean the world to me. I love you. Happy 2 years, my love 💛</b></p>
 
     <img src="photo1.jpeg" width="100%" style="border-radius:12px;margin-top:10px;">
     <img src="photo2.jpeg" width="100%" style="border-radius:12px;margin-top:10px;">
@@ -90,12 +116,12 @@ h2 {
 <script>
 function showLove() {
   document.getElementById("msg").style.display = "block";
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 25; i++) {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "💛";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    heart.style.animationDuration = (6 + Math.random() * 6) + "s";
     document.body.appendChild(heart);
   }
 }
