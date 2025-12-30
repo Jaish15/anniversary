@@ -1,164 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💛 Our 2 Year Anniversary 💛</title>
+<meta charset="UTF-8">
+<title>💛 Our 2 Year Anniversary 💛</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #fff6b7, #fdd835);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fff6b7, #fdd835);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
-    .card {
-      background: white;
-      max-width: 420px;
-      width: 100%;
-      padding: 20px;
-      border-radius: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      position: relative;
-      text-align: center;
-      animation: popIn 1s ease;
-    }
+.card {
+  background: white;
+  max-width: 420px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
 
-    @keyframes popIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+h2 {
+  color: #fbc02d;
+}
 
-    h2 {
-      color: #fbc02d;
-      margin-top: 10px;
-    }
+.tap {
+  margin: 20px 0;
+  cursor: pointer;
+}
 
-    .tap-area {
-      margin: 20px 0;
-      cursor: pointer;
-      animation: pulse 2s infinite;
-    }
+.tap img {
+  width: 220px;
+  border-radius: 20px;
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+.message {
+  display: none;
+  margin-top: 20px;
+  background: #fff9c4;
+  padding: 18px;
+  border-radius: 15px;
+  animation: fadeIn 1.5s ease;
+}
 
-    .tap-area img {
-      width: 220px;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .message-box {
-      margin-top: 20px;
-      padding: 18px;
-      border-radius: 15px;
-      background: #fff9c4;
-      font-size: 14px;
-      display: none;
-      text-align: left;
-      animation: fadeIn 2s ease-in-out;
-    }
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 22px;
+  animation: float 10s linear infinite;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .photo-grid img {
-      width: 100%;
-      border-radius: 12px;
-      animation: zoom 6s infinite alternate;
-    }
-
-    @keyframes zoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.05); }
-    }
-
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 22px;
-      animation: floatUp 10s linear infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-120vh); opacity: 0; }
-    }
-  </style>
+@keyframes float {
+  to { transform: translateY(-120vh); opacity: 0; }
+}
+</style>
 </head>
+
 <body>
 
-  <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+<div class="card">
+  <h2>💛 Tap Your Surprise 💛</h2>
 
-  <div class="card">
-    <h2>💛 Tap Your Surprise 💛</h2>
-
-    <div class="tap-area" onclick="openSurprise()">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://jaish15.github.io/anniversary/" />
-    </div>
-
-    <div id="result" class="message-box">
-      <p><b>To my boyfriend!! &lt;3</b></p>
-
-      <p>Please know I'll always love you. I'll never give up on you. I'll be here until the very end. You're my only love. You deserve the world.</p>
-
-      <p>You make me feel like I belong, loved, appreciated, accepted. You make me feel less weird. You're the best boyfriend I could ever ask for.</p>
-
-      <p>I hope we stick together forever. Everything about you is perfect and words will never be enough.</p>
-
-      <p>I trusted you enough to open my heart. Falling in love with you was worth everything. You mean the world to me.</p>
-
-      <p>I love you with my whole heart. Happy 2 years, my love 💛</p>
-
-      <div class="photo-grid">
-        <img src="photo1.jpeg">
-        <img src="photo2.jpeg">
-        <img src="photo3.jpeg">
-      </div>
-    </div>
+  <div class="tap" onclick="showLove()">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://jaish15.github.io/anniversary/">
   </div>
 
-  <script>
-    function openSurprise() {
-      document.getElementById("result").style.display = "block";
-      document.getElementById("bgMusic").play();
-      createHearts();
-    }
+  <div class="message" id="msg">
+    <p><b>To my boyfriend!! &lt;3</b></p>
+    <p>Please know I'll always love you. I'll never give up on you. I'll be here until the very end. You're my only love.</p>
+    <p>You make me feel loved, accepted, and safe. You mean the world to me.</p>
+    <p>I love you endlessly. Happy 2 years, my love 💛</p>
 
-    function createHearts() {
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💛";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (8 + Math.random() * 6) + "s";
-        document.body.appendChild(heart);
+    <img src="photo1.jpeg" width="100%" style="border-radius:12px;margin-top:10px;">
+    <img src="photo2.jpeg" width="100%" style="border-radius:12px;margin-top:10px;">
+    <img src="photo3.jpeg" width="100%" style="border-radius:12px;margin-top:10px;">
+  </div>
+</div>
 
-        setTimeout(() => heart.remove(), 12000);
-      }, 800);
-    }
-  </script>
+<script>
+function showLove() {
+  document.getElementById("msg").style.display = "block";
+  for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💛";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+  }
+}
+</script>
 
 </body>
 </html>
